@@ -1,0 +1,10 @@
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+
+app:
+    resource: "@AppBundle/Controller/DefaultController.php"
+    type:     annotation
+
+ws:
+    resource: "@AppBundle/Controller/WsController.php"
+    type:     annotation

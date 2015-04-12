@@ -1,0 +1,69 @@
+{% extends 'AppBundle::main.html.twig' %}
+
+{% block title %}
+    Command monitor
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets '@css_table_template' '@AppBundle/Resources/public/css/custom.css' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts
+        '@js_jquery'
+        '@js_backbone'
+        '@AppBundle/Resources/public/js/models/*'
+        '@AppBundle/Resources/public/js/views/*'
+        '@AppBundle/Resources/public/js/collections/*'
+        '@AppBundle/Resources/public/js/*'
+    %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+    {% include 'AppBundle:partials:_log-template.html.twig' %}
+    {% include 'AppBundle:partials:_info-status-template.html.twig' %}
+    {% include 'AppBundle:partials:_paginator-template.html.twig' %}
+    {% include 'AppBundle:partials:_page-template.html.twig' %}
+{% endblock %}
+
+{% block body %}
+<article class="container_12">
+    <section class="grid_12">
+        <div class="block-border">
+            <form class="block-content form" id="table_form" action="">
+                <h1>Command monitor</h1>
+                <div class="block-controls">
+                    <ul class="controls-buttons" id="paginator-controls"></ul>
+                </div>
+                <div class="no-margin">
+                    <table class="table" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Command</th>
+                                <th scope="col">Exit status</th>
+                                <th scope="col">Logged at</th>
+                                <th scope="col" style="max-width: 50%; width: 50%;">Execution log text</th>
+                            </tr>
+                        </thead>
+                        <tbody id="log-table-list">
+                            <tr>
+                                <td style="text-align: center;" colspan="5">
+                                    <img src="{{ asset('bundles/app/images/loading_spinner.gif') }}">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <ul class="message no-margin">
+                    <li id="table-result-info"></li>
+                </ul>
+            </form>
+        </div>
+    </section>
+</article>
+{% endblock %}

@@ -1,0 +1,11 @@
+services:
+    app.log_ws_mapper:
+        class: AppBundle\Services\LogWsMapper
+        arguments:
+          - @router
+
+    app.log_paginator:
+        class: AppBundle\Services\LogPaginator
+        arguments:
+          - @doctrine.orm.entity_manager
+          - 20 # PAGE SIZE

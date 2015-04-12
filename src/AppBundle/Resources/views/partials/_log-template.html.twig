@@ -1,0 +1,15 @@
+<script type="text/template" id="underscore-log-template">
+    <td><%= id %></td>
+    <td><%= command %></td>
+    <td>
+        <% if (exitCode) { %>
+            <img src="{{ asset('bundles/app/images/cross.png') }}" height="16" width="16">
+            <% print('ERROR! (' + exitCode + ')');
+        } else { %>
+            <img src="{{ asset('bundles/app/images/tick.png') }}" height="16" width="16">
+            <% print('Okay');
+        } %>
+    </td>
+    <td> <%= new Date(createdAt * 1000) %> </td>
+    <td class="cell-log-text">Click to load</td>
+</script>
